@@ -16,7 +16,6 @@ class App_Estoque {
 
         console.log("Senha:");
         let senha: string = prompt("");
-        
 
         console.log("Digite sua ContraSenha:");
         let Contra_senha: string = prompt("");
@@ -37,6 +36,7 @@ class App_Estoque {
                 console.log("4 - Excluir produto");
                 console.log("5 - Limpar tela");
                 console.log("6 - Encerrar sistema");
+                console.log("7 - Histórico de produtos atualizados");
 
                 opcao = Number(prompt("Escolha uma opção: "));
 
@@ -45,31 +45,38 @@ class App_Estoque {
                     estoque.listarProdutos();
 
                 } else if (opcao === 2) {
-                     if (Contra_senha === "1234") {
-                         console.log("\nLogin realizado com sucesso!")}else{
-                            console.log("senha incorreta")
-                         }
-                         
-                    let nome: string = prompt("Nome do produto: ");
 
-                    estoque.cadastrarProduto(nome);
+                    if (Contra_senha === "1234") {
+
+                        let nome: string = prompt("Nome do produto: ");
+
+                        estoque.cadastrarProduto(nome);
+
+                    } else {
+
+                        console.log("Senha incorreta!");
+
+                    }
 
                 } else if (opcao === 3) {
 
-                    estoque.listarProdutos();
-
                     if (Contra_senha === "1234") {
-                         console.log("\nLogin realizado com sucesso!")}else{
-                            console.log("senha incorreta")
-                         }
-                         
-                    let numeroAtualizar: number =
-                        Number(prompt("Número do produto: "));
 
-                    let novoNome: string =
-                        prompt("Novo nome: ");
+                        estoque.listarProdutos();
 
-                    estoque.atualizarProduto(numeroAtualizar, novoNome);
+                        let numeroAtualizar: number =
+                            Number(prompt("Número do produto: "));
+
+                        let novoNome: string =
+                            prompt("Novo nome: ");
+
+                        estoque.atualizarProduto(numeroAtualizar, novoNome);
+
+                    } else {
+
+                        console.log("Senha incorreta!");
+
+                    }
 
                 } else if (opcao === 4) {
 
@@ -89,8 +96,10 @@ class App_Estoque {
 
                     console.log("Sistema encerrado!");
 
-                }else if (opcao === 7){
-                     console
+                } else if (opcao === 7) {
+
+                    estoque.listarHistorico();
+
                 } else {
 
                     console.log("Opção inválida!");
